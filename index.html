@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حجر نرد</title>
+    <style>
+      #d1, #d2 {
+        text-align: center;
+      }
+      img {
+        width: 30%;
+        margin-top: 3%;
+        transition: transform 0.5s ease-in-out;
+        border-radius: 50%;
+      }
+      #d2 {
+        margin-top: 2%;
+      }
+button {
+    border-top: 1px solid #96d1f8;
+   background: #d4657d;
+   background: -webkit-gradient(linear, left top, left bottom, from(#853e9c), to(#d4657d));
+   background: -webkit-linear-gradient(top, #853e9c, #d4657d);
+   background: -moz-linear-gradient(top, #853e9c, #d4657d);
+   background: -ms-linear-gradient(top, #853e9c, #d4657d);
+   background: -o-linear-gradient(top, #853e9c, #d4657d);
+   padding: 15px 30px;
+   -webkit-border-radius: 8px;
+   -moz-border-radius: 8px;
+   border-radius: 8px;
+   -webkit-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   -moz-box-shadow: rgba(0,0,0,1) 0 1px 0;
+   box-shadow: rgba(0,0,0,1) 0 1px 0;
+   text-shadow: rgba(0,0,0,.4) 0 1px 0;
+   color: #000000;
+   font-size: 18px;
+   font-family: Georgia, serif;
+   text-decoration: none;
+   vertical-align: middle;
+   }
+button:hover {
+   border-top-color: #742878;
+   background: #742878;
+   color: #ccc;
+   }
+button:active {
+   border-top-color: #5c1b4b;
+   background: #5c1b4b;
+   }
+   @media (max-width: 768px) {
+    img{
+      width: 60%;
+    }
+   }
+    </style>
+  </head>
+  <body>
+    <div id="d1">
+      <img id="randomImage" src="image5.jpg">
+      <audio id="audio"></audio>
+      <!-- إضافة عنصر audio وتعيين ملف الصوت -->
+    </div>
+    <div id="d2">
+      <button onclick="displayRandomImage()">Click me</button>
+    </div>
+    <script>
+      const images = ["image1.jpg", "image2.jpg", "image3.jpg", "image4.jpg", "image5.jpg", "image6.jpg"];
+      const sounds = ["sound1.mp3", "sound2.mp3", "sound3.mp3", "sound4.mp3", "sound5.mp3", "sound6.mp3"]; // مصفوفة الملفات الصوتية
+      
+      function displayRandomImage() {
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const randomImage = images[randomIndex];
+        const randomSound = sounds[randomIndex]; // اختيار الملف الصوتي المطابق للصورة
+        const imageElement = document.getElementById("randomImage");
+        const audioElement = document.getElementById("audio");
+        
+        imageElement.src = randomImage;
+        imageElement.style.transform = "rotate(360deg)";
+        
+        audioElement.src = randomSound; // تعيين الملف الصوتي
+        audioElement.play();
+        
+        imageElement.addEventListener("transitionend", function() {
+          imageElement.style.transform = "none";
+        });
+      }
+    </script>
+  </body>
+</html>
